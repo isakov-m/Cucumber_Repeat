@@ -50,5 +50,23 @@ public class DialogContent extends Parent {
     @FindBy(xpath = "//div[contains(text(),'successfully')]")
     public WebElement successMessage;
 
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='shortName' ]//input")
+    public WebElement shortNameInput;
+
+    @FindBy(xpath = "//div[contains(text(),'already exist')]")
+    public WebElement alreadyMsg;
+
+    @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
+    public WebElement searchInput;
+
+    @FindBy(xpath="//ms-search-button//button")
+    public WebElement searchButton;
+
+    @FindBy(xpath="(//ms-delete-button//button)[1]")
+    public WebElement deleteImageBtn;
+
+    @FindBy(xpath="//button[@type='submit']")
+    public WebElement deleteDialogBtn;
+
 
 }

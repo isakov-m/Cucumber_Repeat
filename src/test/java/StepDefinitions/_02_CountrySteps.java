@@ -22,7 +22,7 @@ public class _02_CountrySteps {
     @When("Create country")
     public void createCountry() {
         String ulkeAdi = RandomStringUtils.randomAlphanumeric(8); // 8 karakter
-        String ulkeKodu = RandomStringUtils.randomAlphanumeric(4); // 4 karakter
+        String ulkeKodu = RandomStringUtils.randomNumeric(4); // 4 rakam
         dc.myClick(dc.addButton);
         dc.mySendKeys(dc.nameInput,ulkeAdi);
         dc.mySendKeys(dc.codeInput,ulkeKodu);

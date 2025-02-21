@@ -11,5 +11,5 @@ Feature: Country Multi Scenario
     Then Success message should be displayed
 
     Scenario: Create country 2
-      When Create a country name as "ismU25" code as "U25"
+      When Create a country name as "ismU255" code as "U255"
       Then Success message should be displayed
