@@ -88,6 +88,7 @@ public class DialogContent extends Parent {
 
 
 
+
     public void deleteItem(String searchText){
         mySendKeys(searchInput, searchText);
         myClick(searchButton); // fuse bar ı çocukları ortaya çıkıyor

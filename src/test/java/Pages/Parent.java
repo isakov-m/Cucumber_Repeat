@@ -13,8 +13,7 @@ import java.time.Duration;
 
 public class Parent {
 
-    public WebDriverWait wait;
-
+    public WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
     public void myClick(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
         scrollToElement(element);
