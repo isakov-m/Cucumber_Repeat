@@ -50,5 +50,13 @@ https://qaautomation.expert/2022/08/10/how-to-add-screenshot-to-cucumber-extentr
     screenshot.dir=test-output/screenshots/
     screenshot.rel.path=../screenshots/
 
+7-  PDF Report için gerekli işlem
+https://www.programsbuzz.com/article/extent-pdf-report-cucumber-testng
+
+extends.properties e aşağıdaki bölüm eklendi
+
+            #PDF Report
+            extent.reporter.pdf.start=true
+            extent.reporter.pdf.out=PdfReport.pdf
 
 
