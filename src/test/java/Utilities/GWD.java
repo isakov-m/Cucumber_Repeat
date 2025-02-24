@@ -2,11 +2,22 @@ package Utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Locale;
 
 public class GWD {
     private static WebDriver driver;
+
+
+    // extend report türkçe bilg çalışmaması sebebiyle eklendi
+//        Locale.setDefault(new Locale("EN"));
+//        System.setProperty("user.language", "EN");
+
 
     public static WebDriver getDriver() {
         if (driver == null) { // ilk kez 1 defa calissin
