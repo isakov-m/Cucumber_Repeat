@@ -39,4 +39,11 @@ public class Parent {
         //action la ESC ye basarak açık kutucuk veya mesaj var ise kapat
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
+
+    public void myJsClick(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        scrollToElement(element);
+        JavascriptExecutor js=(JavascriptExecutor)GWD.getDriver();
+        js.executeScript("arguments[0].click();", element);
+    }
 }
