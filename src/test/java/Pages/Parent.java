@@ -1,6 +1,6 @@
 package Pages;
 
-import Utilities.GWD;
+import Utilities.GWD_old;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class Parent {
 
-    public WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(20));
+    public WebDriverWait wait = new WebDriverWait(GWD_old.getDriver(), Duration.ofSeconds(20));
     public void myClick(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
         scrollToElement(element);
@@ -28,7 +28,7 @@ public class Parent {
     }
 
     public void scrollToElement(WebElement element){
-        JavascriptExecutor js  = (JavascriptExecutor)GWD.getDriver();
+        JavascriptExecutor js  = (JavascriptExecutor) GWD_old.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
@@ -37,13 +37,13 @@ public class Parent {
 
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
         //action la ESC ye basarak açık kutucuk veya mesaj var ise kapat
-        new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
+        new Actions(GWD_old.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
     public void myJsClick(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         scrollToElement(element);
-        JavascriptExecutor js=(JavascriptExecutor)GWD.getDriver();
+        JavascriptExecutor js=(JavascriptExecutor) GWD_old.getDriver();
         js.executeScript("arguments[0].click();", element);
     }
 }

@@ -1,14 +1,8 @@
 package StepDefinitions;
 
 import Pages.DialogContent;
-import Utilities.GWD;
+import Utilities.GWD_old;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
-import java.time.Duration;
 
 public class _01_LoginSteps {
     DialogContent dc = new DialogContent();
@@ -16,7 +10,7 @@ public class _01_LoginSteps {
     @Given("Navigate to Campus")
     public void navigate_to_campus() {
         // System.out.println("Site acildi");
-        GWD.getDriver().get("https://test.mersys.io/");
+        GWD_old.getDriver().get("https://test.mersys.io/");
     }
 
     @When("Enter username and password and click login button")

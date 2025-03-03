@@ -5,44 +5,64 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Locale;
 
 public class GWD {
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
+    public static ThreadLocal<String> threadBrowserName = new ThreadLocal<>();
 
-
-    // extend report türkçe bilg çalışmaması sebebiyle eklendi
-//        Locale.setDefault(new Locale("EN"));
-//        System.setProperty("user.language", "EN");
-
-
+    //threadDriver.get() -> bulunduğum thread deki driver ı al
+    //threadDriver.set(driver) -> bulunduğum threade driver set et
     public static WebDriver getDriver() {
-        if (driver == null) { // ilk kez 1 defa calissin
-            driver = new ChromeDriver(); // jenkins deyken : sen head olmadan yani hafızada çalış
-            driver.manage().window().maximize(); // Ekranı max yapıyor.
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20)); // 20 sn mühlet: sayfayı yükleme mühlet
 
+        // extend report türkçe bilg çalışmaması sebebiyle eklendi
+        Locale.setDefault(new Locale("EN"));
+        System.setProperty("user.language", "EN");
+
+        if (threadBrowserName.get() == null) // xml den çalıştırlmayan diğer bölümler
+            threadBrowserName.set("chrome"); // için default chrome olsun
+
+        if (threadDriver.get() == null) { // ilk kez 1 defa çalışssın
+
+            switch (threadBrowserName.get()) {
+                case "firefox":
+                    threadDriver.set(new FirefoxDriver());
+                    break; // ilgili threade bir driver set ettim
+                case "safari":
+                    threadDriver.set(new SafariDriver());
+                    break; // ilgili threade bir driver set ettim
+                case "edge":
+                    threadDriver.set(new EdgeDriver());
+                    break; // ilgili threade bir driver set ettim
+                default:
+                    threadDriver.set(new ChromeDriver()); // ilgili threade bir driver set ettim
+            }
         }
-        return driver;
+
+        threadDriver.get().manage().window().maximize();
+        threadDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20)); // 20 sn mühlet: sayfayı yükleme mühlet
+        return threadDriver.get(); //bulunduğum threade driver ver
     }
 
     public static void quitDriver() {
-        // test sonucu ekranda bir miktar beklesin diye
+        //test sonucu ekranı bir miktar beklesin diye
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        // driver kapat
-        if (driver != null) { // driver var ise
-            driver.quit();
-            driver = null;
-        }
+        //driver kapat
+        if (threadDriver.get() != null) { //driver var ise
+            threadDriver.get().quit();
 
+            WebDriver driver = threadDriver.get(); // direk eşitleme yapamadığım için, içindekini al
+            driver = null;  // null a eşitle
+
+            threadDriver.set(driver); // kendisine null olarak ver, bu hatta bir dolu driver yok
+        }
     }
 
 }

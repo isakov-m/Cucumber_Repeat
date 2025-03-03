@@ -1,12 +1,9 @@
 package StepDefinitions;
 
-import Utilities.GWD;
+import Utilities.GWD_old;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.testng.annotations.Test;
 
 public class Hooks {
 
@@ -30,6 +27,6 @@ public class Hooks {
 
         // System.out.println("Senaryo bitti");
         // dogru calisirsa burada quiti cagiracagim
-        GWD.quitDriver();
+        GWD_old.quitDriver();
     }
 }
