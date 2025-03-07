@@ -11,21 +11,20 @@ import org.testng.annotations.Parameters;
 @CucumberOptions(
         tags = "@Regression",
         features = {"src/test/java/FeatureFiles"},
-        glue={"StepDefinitions"},
+        glue = {"StepDefinitions"},
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 public class _08_ParalelTest extends AbstractTestNGCucumberTests {
 
     @BeforeClass
     @Parameters("browserTipi")
-    public void beforeClass(String browserName)
-    {
+    public void beforeClass(String browserName) {
         GWD.threadBrowserName.set(browserName);
     }
 
     @AfterClass
-    public  static void writeExtentReport(){
-        ExtentService.getInstance().setSystemInfo("Windows User Name",System.getProperty("user.name")); // username : İsmet Temur
+    public static void writeExtentReport() {
+        ExtentService.getInstance().setSystemInfo("Windows User Name", System.getProperty("user.name")); // username : İsmet Temur
         ExtentService.getInstance().setSystemInfo("Time Zone", System.getProperty("user.timezone"));
         ExtentService.getInstance().setSystemInfo("User Name", "İsmet Temur");
         ExtentService.getInstance().setSystemInfo("Application Name", "Campus");
@@ -36,4 +35,5 @@ public class _08_ParalelTest extends AbstractTestNGCucumberTests {
         ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
         ExtentService.getInstance().setSystemInfo("Ek Satır", "Açıklama");
     }
+
 }
