@@ -39,9 +39,13 @@ public class GWD {
                         threadDriver.set(new FirefoxDriver(options));
                     }
                     else {
-                        ChromeOptions chOptions = new ChromeOptions();
-                        chOptions.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
-                        threadDriver.set(new ChromeDriver(chOptions)); // ilgili threade bir driver set ettim
+                        FirefoxOptions options = new FirefoxOptions();
+                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+                        threadDriver.set(new FirefoxDriver(options));
+
+//                        ChromeOptions chOptions = new ChromeOptions();
+//                        chOptions.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+//                        threadDriver.set(new ChromeDriver(chOptions)); // ilgili threade bir driver set ettim
                     }
 
 //                    EdgeOptions eOptions=new EdgeOptions();
