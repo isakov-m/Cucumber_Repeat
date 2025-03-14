@@ -39,7 +39,7 @@ public class GWD {
                         threadDriver.set(new FirefoxDriver(options));
                     }
                     else {
-                        threadDriver.set(new ChromeDriver()); // ilgili threade bir driver set ettim
+                        threadDriver.set(new FirefoxDriver()); // ilgili threade bir driver set ettim
                     }
 
 //                    EdgeOptions eOptions=new EdgeOptions();
