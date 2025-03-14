@@ -24,7 +24,7 @@ public class GWD {
         System.setProperty("user.language", "EN");
 
         if (threadBrowserName.get()==null) // xml den çalıştırlmayan diğer bölümler
-            threadBrowserName.set("chrome"); // için default chrome olsun
+            threadBrowserName.set("edge"); // için default chrome olsun
 
         if (threadDriver.get()==null) { // ilk kez 1 defa çalışssın
 
@@ -39,7 +39,7 @@ public class GWD {
                         threadDriver.set(new FirefoxDriver(options));
                     }
                     else {
-                        threadDriver.set(new FirefoxDriver()); // ilgili threade bir driver set ettim
+                        threadDriver.set(new EdgeDriver()); // ilgili threade bir driver set ettim
                     }
 
 //                    EdgeOptions eOptions=new EdgeOptions();
