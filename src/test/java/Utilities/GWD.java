@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
@@ -24,7 +25,7 @@ public class GWD {
         System.setProperty("user.language", "EN");
 
         if (threadBrowserName.get()==null) // xml den çalıştırlmayan diğer bölümler
-            threadBrowserName.set("edge"); // için default chrome olsun
+            threadBrowserName.set("chrome"); // için default chrome olsun
 
         if (threadDriver.get()==null) { // ilk kez 1 defa çalışssın
 
@@ -34,12 +35,12 @@ public class GWD {
                 case "edge":    threadDriver.set(new EdgeDriver());    break; // ilgili threade bir driver set ettim
                 default :
                     if (isRunningOnJenkins()) {
-                        FirefoxOptions options = new FirefoxOptions();
+                        EdgeOptions options = new EdgeOptions();
                         options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
-                        threadDriver.set(new FirefoxDriver(options));
+                        threadDriver.set(new EdgeDriver(options));
                     }
                     else {
-                        threadDriver.set(new EdgeDriver()); // ilgili threade bir driver set ettim
+                        threadDriver.set(new ChromeDriver()); // ilgili threade bir driver set ettim
                     }
 
 //                    EdgeOptions eOptions=new EdgeOptions();
