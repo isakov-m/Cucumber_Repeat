@@ -35,12 +35,12 @@ public class GWD {
                 default :
                     if (isRunningOnJenkins()) {
                         FirefoxOptions options = new FirefoxOptions();
-                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=2880,1620");
                         threadDriver.set(new FirefoxDriver(options));
                     }
                     else {
                         FirefoxOptions options = new FirefoxOptions();
-                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=2880, 1620");
                         threadDriver.set(new FirefoxDriver(options));
 
 //                        ChromeOptions chOptions = new ChromeOptions();
