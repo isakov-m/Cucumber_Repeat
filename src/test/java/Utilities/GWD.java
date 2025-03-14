@@ -24,7 +24,7 @@ public class GWD {
         System.setProperty("user.language", "EN");
 
         if (threadBrowserName.get()==null) // xml den çalıştırlmayan diğer bölümler
-            threadBrowserName.set("firefox"); // için default chrome olsun
+            threadBrowserName.set("chrome"); // için default chrome olsun
 
         if (threadDriver.get()==null) { // ilk kez 1 defa çalışssın
 
@@ -35,17 +35,11 @@ public class GWD {
                 default :
                     if (isRunningOnJenkins()) {
                         FirefoxOptions options = new FirefoxOptions();
-                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1620,2880");
+                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
                         threadDriver.set(new FirefoxDriver(options));
                     }
                     else {
-                        FirefoxOptions options = new FirefoxOptions();
-                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1620, 2880");
-                        threadDriver.set(new FirefoxDriver(options));
-
-//                        ChromeOptions chOptions = new ChromeOptions();
-//                        chOptions.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
-//                        threadDriver.set(new ChromeDriver(chOptions)); // ilgili threade bir driver set ettim
+                        threadDriver.set(new ChromeDriver()); // ilgili threade bir driver set ettim
                     }
 
 //                    EdgeOptions eOptions=new EdgeOptions();
