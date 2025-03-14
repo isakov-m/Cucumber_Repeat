@@ -24,7 +24,7 @@ public class GWD {
         System.setProperty("user.language", "EN");
 
         if (threadBrowserName.get()==null) // xml den çalıştırlmayan diğer bölümler
-            threadBrowserName.set("chrome"); // için default chrome olsun
+            threadBrowserName.set("firefox"); // için default chrome olsun
 
         if (threadDriver.get()==null) { // ilk kez 1 defa çalışssın
 
