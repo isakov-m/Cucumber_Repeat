@@ -6,13 +6,15 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 import java.util.Locale;
 
 public class GWD {
+
     private static ThreadLocal<WebDriver> threadDriver=new ThreadLocal<>();
     public static ThreadLocal<String> threadBrowserName=new ThreadLocal<>();
 
@@ -34,18 +36,20 @@ public class GWD {
                 case "safari":  threadDriver.set(new SafariDriver());  break; // ilgili threade bir driver set ettim
                 case "edge":    threadDriver.set(new EdgeDriver());    break; // ilgili threade bir driver set ettim
                 default :
+
                     if (isRunningOnJenkins()) {
                         FirefoxOptions options = new FirefoxOptions();
-                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=2880,1620");
+                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
                         threadDriver.set(new FirefoxDriver(options));
+                        // if (isRunningOnJenkins()) {
+                        //   FirefoxOptions options = new FirefoxOptions();
+                        // options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+                        // threadDriver.set(new FirefoxDriver(options));
                     }
                     else {
                         threadDriver.set(new ChromeDriver()); // ilgili threade bir driver set ettim
                     }
 
-//                    EdgeOptions eOptions=new EdgeOptions();
-//                    eOptions.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
-//                    threadDriver.set(new EdgeDriver(eOptions));
             }
         }
 
