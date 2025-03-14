@@ -106,9 +106,7 @@
         </dependency>
 
 
-
     </dependencies>
-
 
 
     <!--  Jenkins in Çalıştırma komutunun , nereyi açlıştıracağını belirlediğimiz plugin -->
@@ -145,9 +143,89 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
-
     </build>
+
+    <profiles>
+        <profile>
+            <id>Smoke_Yeni</id>
+
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.13.0</version>
+                        <configuration>
+                            <source>21</source>
+                            <target>21</target>
+                        </configuration>
+                    </plugin>
+
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.2.5</version>
+                        <configuration>
+
+                            <!--                    <suiteXmlFiles>-->
+                            <!--                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
+                            <!--                    </suiteXmlFiles>-->
+
+                            <includes>
+                                <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
+                                <include>**/_04_TestRunnerSmoke.java</include>
+                            </includes>
+
+
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+
+
+        <profile>
+
+            <id>Regression</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.13.0</version>
+                        <configuration>
+                            <source>21</source>
+                            <target>21</target>
+                        </configuration>
+                    </plugin>
+
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.2.5</version>
+                        <configuration>
+
+                            <!--                    <suiteXmlFiles>-->
+                            <!--                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
+                            <!--                    </suiteXmlFiles>-->
+
+                            <includes>
+                                <!-- for  run class or classes  **/:bulunduğu lokasyonu bütün klasörlere göre bulabiliyor   -->
+                                <include>**/_05_TestRunnerRegression.java</include>
+                            </includes>
+
+
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
 
 </project>
