@@ -35,9 +35,9 @@ public class GWD {
                 case "edge":    threadDriver.set(new EdgeDriver());    break; // ilgili threade bir driver set ettim
                 default :
                     if (isRunningOnJenkins()) {
-                        EdgeOptions options = new EdgeOptions();
-                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
-                        threadDriver.set(new EdgeDriver(options));
+                        FirefoxOptions options = new FirefoxOptions();
+                        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=2880,1620");
+                        threadDriver.set(new FirefoxDriver(options));
                     }
                     else {
                         threadDriver.set(new ChromeDriver()); // ilgili threade bir driver set ettim
