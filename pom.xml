@@ -170,7 +170,7 @@
 
                             <includes>
                                 <!-- Specifies which class or classes to run; **/ allows locating by any folder structure -->
-                                <include>**/_04_TestRunnerRegression.java</include>
+                                <include>**/_04_TestRunnerSmoke.java</include>
                             </includes>
 
                         </configuration>
